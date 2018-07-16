@@ -46,7 +46,7 @@ def main():
     ip_addr = raw_input("Enter IP address: ")
     username = 'pyclass'
     password = getpass()
-    port = 8022
+    port = 22
 
     remote_conn_pre = paramiko.SSHClient()
     remote_conn_pre.load_system_host_keys()
@@ -63,7 +63,7 @@ def main():
     send_command(remote_conn, cmd='logging buffered 20010')
     send_command(remote_conn, cmd='end')
 
-    output = send_command(remote_conn, cmd='show run | inc logging')
+    output = send_command(remote_conn, cmd='show run | inc logging', delay=2)
     print '\n>>>>'
     print output
     print '>>>>\n'
